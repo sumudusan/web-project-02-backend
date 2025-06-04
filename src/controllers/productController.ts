@@ -11,7 +11,14 @@ export async function createProduct(req: Request, res: Response) {
   }
 }
 
-
+export async function getProduct(req: Request, res: Response) {
+  try {
+    const products = await Product.find();
+    res.json(products);
+  } catch (error: any) {
+    res.status(500).json({ message: error.message });
+  }
+}
 
 
 
